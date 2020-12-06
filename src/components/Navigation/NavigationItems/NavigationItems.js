@@ -9,7 +9,7 @@ const NavigationItems = () => {
           <Link to="/">Burger Builder</Link>
         </li>
         <li>
-          <Link to="/">Checkout</Link>
+          <Link to="/orders">Orders</Link>
         </li>
       </ul>
     </nav>
