@@ -29,9 +29,12 @@ const Order = ({ orderIngredients, price }) => {
   return (
     <div className={classes.Order}>
       <p>Ingredients: {ingredientOutput} </p>
-      <p>
-        Price: <strong>USD {price.toFixed(2)} </strong>
-      </p>
+      <div className={classes.Actions}>
+        <p>
+          Price: <strong>USD {price.toFixed(2)} </strong>
+          <button>Delete</button>
+        </p>
+      </div>
     </div>
   );
 };

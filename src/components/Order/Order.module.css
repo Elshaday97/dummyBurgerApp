@@ -6,3 +6,16 @@
     margin: 10px auto;
     box-sizing: border-box;
 }
+.Actions {
+    display: flex;  
+}
+
+.Actions > p >  button {
+    margin-left: 5px;
+    padding: 5px;
+    border: 1px solid brown;
+    border-radius: 5px;
+    background-color: rgb(165, 101, 42);
+    color: white;
+    width: 60px;
+}

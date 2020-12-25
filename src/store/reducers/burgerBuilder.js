@@ -1,4 +1,4 @@
-import * as actionTypes from "./actions";
+import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
   ingredients: {
@@ -8,6 +8,7 @@ const initialState = {
     soy: 0,
   },
   totalPrice: 4,
+  building: false,
 };
 const ING_PRICES = {
   salad: 0.5,
@@ -25,6 +26,7 @@ const reducer = (state = initialState, action) => {
           [action.ingredientName]: state.ingredients[action.ingredientName] + 1, //overwrite the ingredient from the payload. Use square brackets to dynamically overwrite a property of an object
         },
         totalPrice: state.totalPrice + ING_PRICES[action.ingredientName],
+        building: true,
       };
     case actionTypes.REMOVE_INGREDIENT:
       return {
@@ -34,6 +36,14 @@ const reducer = (state = initialState, action) => {
           [action.ingredientName]: state.ingredients[action.ingredientName] - 1,
         },
         totalPrice: state.totalPrice - ING_PRICES[action.ingredientName],
+        building: true,
+      };
+    case actionTypes.SET_INGREDIENTS:
+      return {
+        ...state,
+        ingredients: action.ingredients,
+        totalPrice: 4,
+        building: false,
       };
     default:
       return state;

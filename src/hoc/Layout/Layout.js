@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import classes from "./Layout.module.css";
 import Aux from "../Aux"; //higher order component for a wrapping root element
 import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
@@ -8,10 +9,16 @@ import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
 const Layout = (props) => {
   return (
     <Aux>
-      <Toolbar />
+      <Toolbar isAuth={props.isAuthenticated} />
       <main className={classes.Content}>{props.children}</main>
     </Aux>
   );
 };
 
-export default Layout;
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.auth.token !== null, //returns true or false
+  };
+};
+
+export default connect(mapStateToProps)(Layout);
