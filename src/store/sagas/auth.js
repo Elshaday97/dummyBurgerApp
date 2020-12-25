@@ -26,6 +26,8 @@ export function* authUserSaga(action) {
     password: action.password,
     returnSecureToken: true,
   };
+  //sign up key=https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]
+  //sign in key=https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[API_KEY]
 
   let url =
     "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyC-qYwz5_TsnOH3XA4_waeiEpVYAWRmhR8";
@@ -51,24 +53,24 @@ export function* authUserSaga(action) {
 }
 
 export function* authCheckStateSaga(action) {
-  // const token = yield localStorage.getItem("token");
-  // if (!token) {
-  //   yield put(actions.logout());
-  // } else {
-  //   const expirationDate = yield new Date(
-  //     localStorage.getItem("expirationDate")
-  //   ); //local storage returns a string and so change it into a date
-  //   if (expirationDate <= new Date()) {
-  //     //if exp date is <= now
-  //     yield put(actions.logout());
-  //   } else {
-  //     const userId = yield localStorage.getItem("userId");
-  //     yield put(actions.authSuccess(token, userId));
-  //     yield put(
-  //       actions.checkAuthTimeout(
-  //         expirationDate.getTime() - new Date().getTime
-  //       ) / 1000
-  //     );
-  //   }
-  // }
+  const token = yield localStorage.getItem("token");
+  if (!token) {
+    yield put(actions.logout());
+  } else {
+    const expirationDate = yield new Date(
+      localStorage.getItem("expirationDate")
+    ); //local storage returns a string and so change it into a date
+    if (expirationDate <= new Date()) {
+      //if exp date is <= now
+      yield put(actions.logout());
+    } else {
+      const userId = yield localStorage.getItem("userId");
+      yield put(actions.authSuccess(token, userId));
+      yield put(
+        actions.checkAuthTimeout(
+          expirationDate.getTime() - new Date().getTime
+        ) / 1000
+      );
+    }
+  }
 }
