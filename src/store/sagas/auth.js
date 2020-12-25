@@ -26,14 +26,12 @@ export function* authUserSaga(action) {
     password: action.password,
     returnSecureToken: true,
   };
-  //sign up key=https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]
-  //sign in key=https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[API_KEY]
-
+ 
   let url =
-    "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyC-qYwz5_TsnOH3XA4_waeiEpVYAWRmhR8";
+    "";
   if (!action.isSignUp) {
     url =
-      "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyC-qYwz5_TsnOH3XA4_waeiEpVYAWRmhR8";
+      "";
   }
   try {
     const res = yield axios.post(url, authData); //to save the response to a constant, add yield since axios returns a promise
