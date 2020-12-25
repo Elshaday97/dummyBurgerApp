@@ -59,41 +59,7 @@ export const auth = (email, password, isSignUp) => {
     password: password,
     isSignUp: isSignUp,
   };
-  // return (dispatch) => {
-  //   dispatch(authStart());
-  //   const authData = {
-  //     email: email,
-  //     password: password,
-  //     returnSecureToken: true,
-  //   };
-  //   //sign up key=https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]
-  //   //sign in key=https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[API_KEY]
-
-  //   let url =
-  //     "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyC-qYwz5_TsnOH3XA4_waeiEpVYAWRmhR8";
-  //   if (!isSignUp) {
-  //     url =
-  //       "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyC-qYwz5_TsnOH3XA4_waeiEpVYAWRmhR8";
-  //   }
-
-  //   axios
-  //     .post(url, authData)
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       //store the token in the local storage not to lose it on refresh
-  //       const expirationDate = new Date(
-  //         new Date().getTime() + res.data.expiresIn * 1000
-  //       );
-  //       localStorage.setItem("token", res.data.idToken);
-  //       localStorage.setItem("expirationDate", expirationDate);
-  //       localStorage.setItem("userId", res.data.userId);
-  //       dispatch(authSuccess(res.data.idToken, res.data.localId));
-  //       dispatch(checkAuthTimeout(res.data.expiresIn));
-  //     })
-  //     .catch((error) => {
-  //       dispatch(authFailure(error.response.data.error));
-  //     });
-  // };
+  
 };
 // if (error.response) {
 //     // The request was made and the server responded with a status code
